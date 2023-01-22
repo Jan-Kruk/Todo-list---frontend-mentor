@@ -1,0 +1,46 @@
+@use 'colors' as c;
+
+:root{
+    --background-bottom-color: hsl(235, 21%, 11%);
+}
+*,
+::before,
+::after {
+	box-sizing: border-box;
+	padding: 0;
+	margin: 0;
+}
+
+body {
+	font-size: 62.5%;
+	position: relative;
+	font-size: 1.8rem;
+	font-family: 'Josefin Sans', sans-serif;
+}
+
+.background {
+	height: 100vh;
+	&__top {
+        height: 35%;
+		background-image: url('../images/bg-mobile-dark.jpg');
+        // background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        &-text{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70%;
+            padding: 0 2rem;
+            color: c.$text-color;
+            &-heading{
+                text-transform: uppercase;
+                letter-spacing: 0.5rem;
+            }
+        }
+	}
+    &__bottom{
+        height: 65%;
+        background-color: var(--background-bottom-color);
+    }
+}
