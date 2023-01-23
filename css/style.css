@@ -1,5 +1,12 @@
 :root {
   --background-bottom-color: hsl(235, 21%, 11%);
+  --todo-background--color: hsl(235, 24%, 19%);
+  --light-grayish-blue: hsl(234, 39%, 85%);
+  --light-grayish-blue-hover: hsl(236, 33%, 92%);
+  --dark-grayish-blue: hsl(234, 11%, 52%);
+  --Very-dark-grayish-blue: hsl(233, 14%, 35%);
+  --Very-Dark-Grayish-Blue: hsl(237, 14%, 26%);
+  --text-color: white;
 }
 
 *,
@@ -11,10 +18,20 @@
 }
 
 body {
-  font-size: 62.5%;
+  font-size: 18px;
   position: relative;
-  font-size: 1.8rem;
   font-family: "Josefin Sans", sans-serif;
+}
+
+.circle {
+  position: relative;
+  margin-right: 0.5rem;
+  width: 1.4rem;
+  height: 1.4rem;
+  border-radius: 100%;
+  border: 2px solid var(--dark-grayish-blue);
+  background-image: url();
+  background-color: var(--todo-background--color);
 }
 
 .background {
@@ -32,6 +49,8 @@ body {
   align-items: center;
   height: 70%;
   padding: 0 2rem;
+  font-size: 2rem;
+  font-weight: 700;
   color: white;
 }
 .background__top-text-heading {
@@ -41,4 +60,115 @@ body {
 .background__bottom {
   height: 65%;
   background-color: var(--background-bottom-color);
+}
+
+.todo {
+  position: absolute;
+  top: 20%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+.todo__create {
+  display: flex;
+  padding: 0.8rem 1.2rem;
+  width: 90%;
+  background-color: var(--todo-background--color);
+  border-radius: 0.5rem;
+}
+.todo__create-input {
+  background: none;
+  width: 90%;
+  border: none;
+  font-family: "Josefin Sans", sans-serif;
+  color: var(--text-color);
+}
+.todo__create-input:focus {
+  outline: none;
+}
+.todo__list {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  margin-top: 1rem;
+  list-style: none;
+  background-color: var(--todo-background--color);
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+.todo__list-item {
+  position: relative;
+  display: flex;
+  text-align: center;
+  flex-direction: row;
+  padding: 0.8rem 1.2rem;
+}
+.todo__list-item-circle {
+  cursor: pointer;
+}
+.todo__list-item-circle:hover {
+  background: linear-gradient(var(--todo-background--color), var(--todo-background--color)) padding-box, linear-gradient(to right, hsl(192deg, 100%, 67%), hsl(280deg, 87%, 65%)) border-box;
+  border: 2px solid transparent;
+}
+.todo__list-item-text {
+  display: flex;
+  align-items: center;
+  font-size: 0.8rem;
+  cursor: pointer;
+  color: var(--text-color);
+}
+.todo__list-item-delete {
+  margin-left: auto;
+  align-self: center;
+  width: 0.8rem;
+  height: 0.8rem;
+  cursor: pointer;
+}
+.todo__list-item::before {
+  content: "";
+  position: absolute;
+  left: -20%;
+  bottom: 0;
+  width: 160%;
+  border-bottom: solid 0.01rem var(--dark-grayish-blue);
+}
+.todo__list-summary {
+  display: flex;
+  text-align: center;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 0.8rem 1.2rem;
+  color: var(--dark-grayish-blue);
+  font-size: 0.8rem;
+}
+.todo__list-summary #clear-completed {
+  cursor: pointer;
+}
+.todo__list-summary #clear-completed:hover {
+  color: var(--text-color);
+}
+.todo__filter {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 90%;
+  margin-top: 1rem;
+  list-style: none;
+  background-color: var(--todo-background--color);
+  border-radius: 0.5rem;
+  overflow: hidden;
+  padding: 0.8rem 1.2rem;
+}
+.todo__filter button {
+  margin: 0 0.5rem;
+  background: none;
+  border: none;
+  font-weight: 700;
+  color: var(--dark-grayish-blue);
+  cursor: pointer;
+}
+.todo__filter button:hover {
+  color: var(--text-color);
 }/*# sourceMappingURL=style.css.map */
