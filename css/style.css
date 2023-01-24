@@ -48,6 +48,7 @@ body {
   justify-content: space-between;
   align-items: center;
   height: 70%;
+  max-width: 900px;
   padding: 0 2rem;
   font-size: 2rem;
   font-weight: 700;
@@ -56,6 +57,9 @@ body {
 .background__top-text-heading {
   text-transform: uppercase;
   letter-spacing: 0.5rem;
+}
+.background__top-text-icon {
+  cursor: pointer;
 }
 .background__bottom {
   height: 65%;
@@ -75,6 +79,7 @@ body {
   display: flex;
   padding: 0.8rem 1.2rem;
   width: 90%;
+  max-width: 900px;
   background-color: var(--todo-background--color);
   border-radius: 0.5rem;
 }
@@ -92,6 +97,7 @@ body {
   display: flex;
   flex-direction: column;
   width: 90%;
+  max-width: 900px;
   margin-top: 1rem;
   list-style: none;
   background-color: var(--todo-background--color);
@@ -108,6 +114,23 @@ body {
 .todo__list-item-circle {
   cursor: pointer;
 }
+.todo__list-item-circle.finished-task::before {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 20;
+  width: 40%;
+  height: 40%;
+  content: "";
+  background-image: url("../images/icon-check.svg");
+  background-size: cover;
+  background-position: center;
+}
+.todo__list-item-circle.finished-task {
+  background-image: linear-gradient(hsl(192deg, 100%, 67%), hsl(280deg, 87%, 65%));
+  border: none;
+}
 .todo__list-item-circle:hover {
   background: linear-gradient(var(--todo-background--color), var(--todo-background--color)) padding-box, linear-gradient(to right, hsl(192deg, 100%, 67%), hsl(280deg, 87%, 65%)) border-box;
   border: 2px solid transparent;
@@ -118,6 +141,10 @@ body {
   font-size: 0.8rem;
   cursor: pointer;
   color: var(--text-color);
+}
+.todo__list-item-text.finished-task {
+  text-decoration: line-through;
+  color: var(--dark-grayish-blue);
 }
 .todo__list-item-delete {
   margin-left: auto;
@@ -154,6 +181,7 @@ body {
   flex-direction: row;
   justify-content: center;
   width: 90%;
+  max-width: 900px;
   margin-top: 1rem;
   list-style: none;
   background-color: var(--todo-background--color);
@@ -177,133 +205,18 @@ body {
   .background__top {
     display: flex;
     justify-content: center;
+    background-image: url("../images/bg-desktop-dark.jpg");
   }
   .background__top-text {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
     width: 50%;
-    padding: 0 2rem;
-    font-size: 2rem;
-    font-weight: 700;
-    color: white;
-  }
-  .background__top-text-heading {
-    text-transform: uppercase;
-    letter-spacing: 0.5rem;
-  }
-  .background__bottom {
-    height: 65%;
-    background-color: var(--background-bottom-color);
-  }
-  .todo {
-    position: absolute;
-    top: 20%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
   }
   .todo__create {
-    display: flex;
-    padding: 0.8rem 1.2rem;
     width: 50%;
-    background-color: var(--todo-background--color);
-    border-radius: 0.5rem;
-  }
-  .todo__create-input {
-    background: none;
-    width: 90%;
-    border: none;
-    font-family: "Josefin Sans", sans-serif;
-    color: var(--text-color);
-  }
-  .todo__create-input:focus {
-    outline: none;
   }
   .todo__list {
-    display: flex;
-    flex-direction: column;
     width: 50%;
-    margin-top: 1rem;
-    list-style: none;
-    background-color: var(--todo-background--color);
-    border-radius: 0.5rem;
-    overflow: hidden;
-  }
-  .todo__list-item {
-    position: relative;
-    display: flex;
-    text-align: center;
-    flex-direction: row;
-    padding: 0.8rem 1.2rem;
-  }
-  .todo__list-item-circle {
-    cursor: pointer;
-  }
-  .todo__list-item-circle:hover {
-    background: linear-gradient(var(--todo-background--color), var(--todo-background--color)) padding-box, linear-gradient(to right, hsl(192deg, 100%, 67%), hsl(280deg, 87%, 65%)) border-box;
-    border: 2px solid transparent;
-  }
-  .todo__list-item-text {
-    display: flex;
-    align-items: center;
-    font-size: 0.8rem;
-    cursor: pointer;
-    color: var(--text-color);
-  }
-  .todo__list-item-delete {
-    margin-left: auto;
-    align-self: center;
-    width: 0.8rem;
-    height: 0.8rem;
-    cursor: pointer;
-  }
-  .todo__list-item::before {
-    content: "";
-    position: absolute;
-    left: -20%;
-    bottom: 0;
-    width: 160%;
-    border-bottom: solid 0.01rem var(--dark-grayish-blue);
-  }
-  .todo__list-summary {
-    display: flex;
-    text-align: center;
-    flex-direction: row;
-    justify-content: space-between;
-    padding: 0.8rem 1.2rem;
-    color: var(--dark-grayish-blue);
-    font-size: 0.8rem;
-  }
-  .todo__list-summary #clear-completed {
-    cursor: pointer;
-  }
-  .todo__list-summary #clear-completed:hover {
-    color: var(--text-color);
   }
   .todo__filter {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
     width: 50%;
-    margin-top: 1rem;
-    list-style: none;
-    background-color: var(--todo-background--color);
-    border-radius: 0.5rem;
-    overflow: hidden;
-    padding: 0.8rem 1.2rem;
-  }
-  .todo__filter button {
-    margin: 0 0.5rem;
-    background: none;
-    border: none;
-    font-weight: 700;
-    color: var(--dark-grayish-blue);
-    cursor: pointer;
-  }
-  .todo__filter button:hover {
-    color: var(--text-color);
   }
 }/*# sourceMappingURL=style.css.map */

@@ -40,7 +40,6 @@ body {
 	&__top {
 		height: 35%;
 		background-image: url('../images/bg-mobile-dark.jpg');
-		// background-position: center;
 		background-repeat: no-repeat;
 		background-size: cover;
 		&-text {
@@ -48,6 +47,7 @@ body {
 			justify-content: space-between;
 			align-items: center;
 			height: 70%;
+			max-width: 900px;
 			padding: 0 2rem;
 			font-size: 2rem;
 			font-weight: 700;
@@ -55,6 +55,9 @@ body {
 			&-heading {
 				text-transform: uppercase;
 				letter-spacing: 0.5rem;
+			}
+			&-icon {
+				cursor: pointer;
 			}
 		}
 	}
@@ -75,6 +78,7 @@ body {
 		display: flex;
 		padding: 0.8rem 1.2rem;
 		width: 90%;
+		max-width: 900px;
 		background-color: var(--todo-background--color);
 		border-radius: 0.5rem;
 		&-input {
@@ -92,7 +96,7 @@ body {
 		display: flex;
 		flex-direction: column;
 		width: 90%;
-
+		max-width: 900px;
 		margin-top: 1rem;
 		list-style: none;
 		background-color: var(--todo-background--color);
@@ -107,6 +111,23 @@ body {
 			&-circle {
 				cursor: pointer;
 			}
+			&-circle.finished-task::before {
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%,-50%);
+				z-index: 20;
+				width: 40%;
+				height: 40%;
+				content: '';
+				background-image: url('../images/icon-check.svg');
+				background-size: cover;
+				background-position: center;
+			}
+			&-circle.finished-task {
+				background-image: linear-gradient( hsl(192, 100%, 67%), hsl(280, 87%, 65%));
+				border: none;
+			}
 			&-circle:hover {
 				background: linear-gradient(var(--todo-background--color), var(--todo-background--color)) padding-box,
 					linear-gradient(to right, hsl(192, 100%, 67%), hsl(280, 87%, 65%)) border-box;
@@ -118,6 +139,10 @@ body {
 				font-size: 0.8rem;
 				cursor: pointer;
 				color: var(--text-color);
+			}
+			&-text.finished-task {
+				text-decoration: line-through;
+				color: var(--dark-grayish-blue);
 			}
 			&-delete {
 				margin-left: auto;
@@ -156,6 +181,7 @@ body {
 		flex-direction: row;
 		justify-content: center;
 		width: 90%;
+		max-width: 900px;
 		margin-top: 1rem;
 		list-style: none;
 		background-color: var(--todo-background--color);
