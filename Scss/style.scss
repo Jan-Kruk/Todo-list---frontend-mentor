@@ -34,6 +34,9 @@ body {
 	background-image: url();
 	background-color: var(--todo-background--color);
 }
+#moon{
+	display: none;
+}
 
 .background {
 	height: 100vh;
@@ -42,6 +45,9 @@ body {
 		background-image: url('../images/bg-mobile-dark.jpg');
 		background-repeat: no-repeat;
 		background-size: cover;
+		&.light-background{
+			background-image: url('../images/bg-mobile-light.jpg')
+		}
 		&-text {
 			display: flex;
 			justify-content: space-between;
@@ -62,7 +68,7 @@ body {
 		}
 	}
 	&__bottom {
-		height: 65%;
+		height: 270%;
 		background-color: var(--background-bottom-color);
 	}
 }

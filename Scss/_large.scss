@@ -1,11 +1,13 @@
 @media (min-width: 768px) {
 	.background {
 		&__top {
-            display: flex;
-            justify-content: center;
+			display: flex;
+			justify-content: center;
 			background-image: url('../images/bg-desktop-dark.jpg');
+			&.light-background {
+				background-image: url('../images/bg-desktop-light.jpg');
+			}
 			&-text {
-
 				width: 50%;
 			}
 		}
@@ -19,7 +21,6 @@
 		}
 		&__filter {
 			width: 50%;
-
 		}
 	}
 }

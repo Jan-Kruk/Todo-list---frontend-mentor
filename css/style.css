@@ -34,6 +34,10 @@ body {
   background-color: var(--todo-background--color);
 }
 
+#moon {
+  display: none;
+}
+
 .background {
   height: 100vh;
 }
@@ -42,6 +46,9 @@ body {
   background-image: url("../images/bg-mobile-dark.jpg");
   background-repeat: no-repeat;
   background-size: cover;
+}
+.background__top.light-background {
+  background-image: url("../images/bg-mobile-light.jpg");
 }
 .background__top-text {
   display: flex;
@@ -62,7 +69,7 @@ body {
   cursor: pointer;
 }
 .background__bottom {
-  height: 65%;
+  height: 270%;
   background-color: var(--background-bottom-color);
 }
 
@@ -206,6 +213,9 @@ body {
     display: flex;
     justify-content: center;
     background-image: url("../images/bg-desktop-dark.jpg");
+  }
+  .background__top.light-background {
+    background-image: url("../images/bg-desktop-light.jpg");
   }
   .background__top-text {
     width: 50%;

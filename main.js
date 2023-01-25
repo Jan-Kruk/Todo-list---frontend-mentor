@@ -7,6 +7,7 @@ let todoFilterBox
 let allBtn
 let activeBtn
 let completedBtn
+let root = document.documentElement
 
 const main = () => {
 	preapareDOMElements()
@@ -25,6 +26,9 @@ const preapareDOMElements = () => {
 	allBtn = document.querySelector('#all')
 	activeBtn = document.querySelector('#active')
 	completedBtn = document.querySelector('#completed')
+	sunBtn = document.querySelector('#sun')
+	moonBtn = document.querySelector('#moon')
+	backgroundTop = document.querySelector('.background__top')
 }
 
 const preapareDOMEvents = () => {
@@ -32,6 +36,8 @@ const preapareDOMEvents = () => {
 	todoList.addEventListener('click', todoEditor)
 	deleteCompledeBtn.addEventListener('click', deleteCompleted)
 	todoFilterBox.addEventListener('click', filterTodos)
+	sunBtn.addEventListener('click', lightBackground)
+	moonBtn.addEventListener('click', darkBackground)
 }
 
 document.addEventListener('DOMContentLoaded', main)
@@ -40,11 +46,12 @@ const CreateNewTodo = () => {
 	const newTodo = document.createElement('li')
 	newTodo.innerHTML = `<li class="todo__list-item"><div class="todo__list-item-circle circle"></div>
     <div class="todo__list-item-text">
-      <p>${todoInput.value}</p>
     </div>
     <img src="./images/icon-cross.svg" alt="" class="todo__list-item-delete"></li>`
 	const liSummary = document.querySelector('.todo__list-summary')
 	todoList.insertBefore(newTodo, liSummary)
+	const allItemsText = document.querySelectorAll('.todo__list-item-text')
+	allItemsText[allItemsText.length - 1].textContent = todoInput.value
 	todoInput.value = ''
 }
 
@@ -91,6 +98,7 @@ const deleteCompleted = () => {
 			el.remove()
 		}
 	})
+	todoCounter()
 }
 
 const filterTodos = e => {
@@ -138,4 +146,23 @@ const showCompleted = () => {
 	allBtn.style.color = ''
 	completedBtn.style.color = 'hsl(220, 98%, 61%)'
 	activeBtn.style.color = ''
+}
+
+const lightBackground = () => {
+	moonBtn.style.display = 'block'
+	sunBtn.style.display = 'none'
+	backgroundTop.classList.add('light-background')
+	root.style.setProperty('--todo-background--color', 'hsl(0, 0%, 98%)')
+	root.style.setProperty('--background-bottom-color', 'hsl(236, 33%, 92%)')
+	root.style.setProperty('--text-color', 'black')
+	root.style.setProperty('--dark-grayish-blue', 'hsl(235, 19%, 35%)')
+}
+const darkBackground = () => {
+	moonBtn.style.display = 'none'
+	sunBtn.style.display = 'block'
+	backgroundTop.classList.remove('light-background')
+	root.style.setProperty('--todo-background--color', 'hsl(235, 24%, 19%)')
+	root.style.setProperty('--background-bottom-color', 'hsl(235, 21%, 11%)')
+	root.style.setProperty('--text-color', 'white')
+	root.style.setProperty('--dark-grayish-blue', 'hsl(233, 14%, 35%)')
 }
