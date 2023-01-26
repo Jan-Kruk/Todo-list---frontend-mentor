@@ -16,6 +16,7 @@
     .attribution {
       font-size: 11px;
       text-align: center;
+      margin-top: 60vh;
     }
 
     .attribution a {
@@ -28,38 +29,50 @@
   <div class="background">
     <div class="background__top">
       <div class="background__top-text">
-        <div class="background__top-text-heading"><h1>Todo</h1></div>
+        <div class="background__top-text-heading">
+          <h1>Todo</h1>
+        </div>
         <div class="background__top-text-icon"><img id="sun" src="./images/icon-sun.svg" alt="">
           <img src="./images/icon-moon.svg" id="moon" alt="">
         </div>
       </div>
     </div>
     <div class="background__bottom"></div>
-  </div>
 
-  <div class="todo">
-    <div class="todo__create">
-      <div class="todo__create-circle circle"></div>
-      <input type="text" class="todo__create-input" placeholder="Create a new todo...">
+
+    <div class="todo">
+      <div class="todo__create">
+        <div class="todo__create-circle circle"></div>
+        <input type="text" class="todo__create-input" placeholder="Create a new todo...">
+      </div>
+
+      <ul class="todo__list">
+        <li class="todo__list-summary">
+          <p id="items-left">0 items left</p>
+          <p id="clear-completed">Clear Completed</p>
+        </li>
+      </ul>
+      <div class="todo__filter">
+        <button id="all">All</button>
+        <button id="active">Active</button>
+        <button id="completed">Completed</button>
+      </div>
+      <div class="attribution">
+        Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
+        Coded by <a href="https://github.com/JanioKruk">Janek</a>.
+      </div>
     </div>
 
-    <ul class="todo__list">
-      <li class="todo__list-summary">
-        <p id="items-left">0 items left</p>
-        <p id="clear-completed">Clear Completed</p>
-      </li>
-    </ul>
-    <div class="todo__filter">
-      <button id="all">All</button>
-      <button id="active">Active</button>
-      <button id="completed">Completed</button>
+    <div class="popup">
+      <input class="popup__input" type="text" placeholder="">
+      <div class="popup__box">
+        <button class="popup__box-buttons popup__box-buttons--accept">Accept</button>
+        <button class="popup__box-buttons popup__box-buttons--cancel">Cancel</button>
+      </div>
+
     </div>
   </div>
 
-  <div class="attribution">
-    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
-    Coded by <a href="https://github.com/JanioKruk">Janek</a>.
-  </div>
   <script src="./main.js"></script>
 </body>
 

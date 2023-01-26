@@ -23,4 +23,16 @@
 			width: 50%;
 		}
 	}
+	.popup {
+		top: 40%;
+		&__box {
+			&-buttons {
+				width: 10rem;
+			}
+		}
+		&__input {
+			width: 25rem;
+			height: 2rem;
+		}
+	}
 }

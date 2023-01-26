@@ -8,6 +8,11 @@ let allBtn
 let activeBtn
 let completedBtn
 let root = document.documentElement
+let popup
+let popupInput
+let popupCloseBtn
+let popupAcceptBtn
+let todoToEdit
 
 const main = () => {
 	preapareDOMElements()
@@ -29,6 +34,10 @@ const preapareDOMElements = () => {
 	sunBtn = document.querySelector('#sun')
 	moonBtn = document.querySelector('#moon')
 	backgroundTop = document.querySelector('.background__top')
+	popup = document.querySelector('.popup')
+	popupInput = document.querySelector('.popup__input')
+	popupCloseBtn = document.querySelector('.popup__box-buttons--cancel')
+	popupAcceptBtn = document.querySelector('.popup__box-buttons--accept')
 }
 
 const preapareDOMEvents = () => {
@@ -38,6 +47,9 @@ const preapareDOMEvents = () => {
 	todoFilterBox.addEventListener('click', filterTodos)
 	sunBtn.addEventListener('click', lightBackground)
 	moonBtn.addEventListener('click', darkBackground)
+	document.body.addEventListener('click', checkClick)
+	popupCloseBtn.addEventListener('click', closePopup)
+	popupAcceptBtn.addEventListener('click', acceptChange)
 }
 
 document.addEventListener('DOMContentLoaded', main)
@@ -47,6 +59,7 @@ const CreateNewTodo = () => {
 	newTodo.innerHTML = `<li class="todo__list-item"><div class="todo__list-item-circle circle"></div>
     <div class="todo__list-item-text">
     </div>
+    <button class="todo__list-item-edit">EDIT</button>
     <img src="./images/icon-cross.svg" alt="" class="todo__list-item-delete"></li>`
 	const liSummary = document.querySelector('.todo__list-summary')
 	todoList.insertBefore(newTodo, liSummary)
@@ -59,6 +72,23 @@ const checkEnter = e => {
 	if (e.key === 'Enter') {
 		checkContent()
 	} else {
+	}
+}
+
+const checkClick = e => {
+	if (
+		e.target.matches('.todo__create') ||
+		e.target.matches('.todo__create-circle') ||
+		e.target.matches('.todo__create-input') ||
+		e.target.matches('#sun') ||
+		e.target.matches('#moon') ||
+		e.target.matches('#clear-completed') ||
+		e.target.matches('#active') ||
+		e.target.matches('#all') ||
+		e.target.matches('#completed')
+	) {
+	} else {
+		checkContent()
 	}
 }
 
@@ -79,13 +109,19 @@ const todoEditor = e => {
 	} else if (e.target.matches('.todo__list-item-circle')) {
 		e.target.classList.toggle('finished-task')
 		e.target.nextElementSibling.classList.toggle('finished-task')
+		todoCounter()
+	} else if (e.target.matches('.todo__list-item-edit')) {
+		showPopup(e.target)
 	}
 }
 const todoCounter = () => {
 	const allItems = document.querySelectorAll('.todo__list-item')
 	let itemsCounter = 0
 	allItems.forEach(el => {
-		itemsCounter++
+		if (el.firstElementChild.matches('.finished-task')) {
+		} else {
+			itemsCounter++
+		}
 	})
 	const itemsLeft = document.querySelector('#items-left')
 	itemsLeft.innerText = `${itemsCounter} items left`
@@ -100,6 +136,8 @@ const deleteCompleted = () => {
 	})
 	todoCounter()
 }
+
+//FILTER FUNCITONS
 
 const filterTodos = e => {
 	if (e.target.matches('#all')) {
@@ -148,6 +186,8 @@ const showCompleted = () => {
 	activeBtn.style.color = ''
 }
 
+//CHANGE COLOR
+
 const lightBackground = () => {
 	moonBtn.style.display = 'block'
 	sunBtn.style.display = 'none'
@@ -165,4 +205,26 @@ const darkBackground = () => {
 	root.style.setProperty('--background-bottom-color', 'hsl(235, 21%, 11%)')
 	root.style.setProperty('--text-color', 'white')
 	root.style.setProperty('--dark-grayish-blue', 'hsl(233, 14%, 35%)')
+}
+
+//POPUP
+
+const showPopup = input => {
+	popup.classList.add('show')
+	todoToEdit = input.previousElementSibling
+	popupInput.value = todoToEdit.textContent.trim()
+}
+
+const closePopup = () => {
+	popup.classList.remove('show')
+	popupInput.value = ''
+}
+
+const acceptChange = () => {
+	if (popupInput.value === '') {
+		popupInput.placeholder = `Todo can't be empty`
+	} else {
+		todoToEdit.textContent = popupInput.value
+		closePopup()
+	}
 }

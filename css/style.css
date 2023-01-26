@@ -19,8 +19,9 @@
 
 body {
   font-size: 18px;
-  position: relative;
   font-family: "Josefin Sans", sans-serif;
+  background-color: var(--background-bottom-color);
+  position: relative;
 }
 
 .circle {
@@ -39,10 +40,10 @@ body {
 }
 
 .background {
-  height: 100vh;
+  position: relative;
 }
 .background__top {
-  height: 35%;
+  height: 35vh;
   background-image: url("../images/bg-mobile-dark.jpg");
   background-repeat: no-repeat;
   background-size: cover;
@@ -68,14 +69,10 @@ body {
 .background__top-text-icon {
   cursor: pointer;
 }
-.background__bottom {
-  height: 65%;
-  background-color: var(--background-bottom-color);
-}
 
 .todo {
   position: absolute;
-  top: 20%;
+  top: 50%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -153,8 +150,17 @@ body {
   text-decoration: line-through;
   color: var(--dark-grayish-blue);
 }
-.todo__list-item-delete {
+.todo__list-item-edit {
   margin-left: auto;
+  background: none;
+  border: none;
+  font-weight: 700;
+  font-size: 0.8rem;
+  color: var(--Very-dark-grayish-blue);
+  cursor: pointer;
+}
+.todo__list-item-delete {
+  margin-left: 1rem;
   align-self: center;
   width: 0.8rem;
   height: 0.8rem;
@@ -208,6 +214,50 @@ body {
   color: var(--text-color);
 }
 
+.popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -850%);
+  background-color: var(--todo-background--color);
+  border-radius: 0.8rem;
+  box-shadow: 0 0 0.2rem 0.01rem var(--light-grayish-blue);
+  transition: transform 0.8s;
+}
+.popup__box {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+}
+.popup__box-buttons {
+  padding: 0.5rem 1rem;
+  margin-bottom: 0.5rem;
+  border-radius: 0.8rem;
+  border: none;
+  background: none;
+  color: var(--text-color);
+  font-family: "Josefin Sans", sans-serif;
+  border: solid var(--dark-grayish-blue) 1px;
+  cursor: pointer;
+}
+.popup__input {
+  background: none;
+  width: 15rem;
+  height: 1.5rem;
+  border: solid var(--dark-grayish-blue) 1px;
+  border-radius: 0.8rem;
+  font-family: "Josefin Sans", sans-serif;
+  color: var(--text-color);
+  margin: 1rem;
+  padding: 0.5rem;
+}
+.popup__input:focus {
+  outline: none;
+}
+.popup.show {
+  transform: translate(-50%, -50%);
+}
+
 @media (min-width: 768px) {
   .background__top {
     display: flex;
@@ -228,5 +278,15 @@ body {
   }
   .todo__filter {
     width: 50%;
+  }
+  .popup {
+    top: 40%;
+  }
+  .popup__box-buttons {
+    width: 10rem;
+  }
+  .popup__input {
+    width: 25rem;
+    height: 2rem;
   }
 }/*# sourceMappingURL=style.css.map */
