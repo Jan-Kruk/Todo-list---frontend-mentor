@@ -50,13 +50,15 @@ const preapareDOMEvents = () => {
 	document.body.addEventListener('click', checkClick)
 	popupCloseBtn.addEventListener('click', closePopup)
 	popupAcceptBtn.addEventListener('click', acceptChange)
+	popupInput.addEventListener('keyup', checkEnter)
 }
 
 document.addEventListener('DOMContentLoaded', main)
 
 const CreateNewTodo = () => {
 	const newTodo = document.createElement('li')
-	newTodo.innerHTML = `<li class="todo__list-item"><div class="todo__list-item-circle circle"></div>
+	newTodo.classList.add('todo__list-item')
+	newTodo.innerHTML = `<div class="todo__list-item-circle circle"></div>
     <div class="todo__list-item-text">
     </div>
     <button class="todo__list-item-edit">EDIT</button>
@@ -71,6 +73,7 @@ const CreateNewTodo = () => {
 const checkEnter = e => {
 	if (e.key === 'Enter') {
 		checkContent()
+		acceptChange()
 	} else {
 	}
 }
